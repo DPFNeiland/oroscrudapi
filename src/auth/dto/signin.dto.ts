@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, IsEmail } from "class-validator"
 
-export class AuthDto {
+export default class SignIn {
 
 
     @IsEmail()
@@ -11,11 +11,5 @@ export class AuthDto {
     @IsNotEmpty()
     senha: string
 
-    @IsString()
-    @IsNotEmpty()
-    nome: string
 
-    @IsString()
-    @IsNotEmpty()
-    cpf: string
 }

@@ -1,17 +1,19 @@
 import { ForbiddenException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
-import { AuthDto } from "./dto";
+import { AuthDto as signup } from "./dto";
+import  SignIn  from "./dto/signin.dto";
 import * as argon from 'argon2'
 import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { error } from "console";
 import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
+import { Sign } from "crypto";
 
 @Injectable()
 export class AuthService {
 
     constructor(private prisma: PrismaService, private jwt: JwtService, private config: ConfigService) { }
-    async signup(dto: AuthDto) {
+    async signup(dto: signup) {
         // gerar a senha
         const senha = await argon.hash(dto.senha)
         // salva os dados do usuário no banco de dados
@@ -20,8 +22,8 @@ export class AuthService {
             const User = await this.prisma.user.create({
                 data: {
                     email: dto.email,
-                    // nome: dto.nome,
-                    // cpf: dto.cpf,
+                    nome: dto.nome,
+                    cpf: dto.cpf,
                     senha
                 }
             })
@@ -45,12 +47,12 @@ export class AuthService {
 
     }
     //Logar na conta
-    async signin(dto: AuthDto) {
+    async signin(dto: SignIn) {
 
         // Achar o usuário pelo email
         const user = await this.prisma.user.findUnique({
             where: {
-                email: dto.email,
+                email: dto.email
             },
         });
         // Se o usuário não existir  criar uma exceção
@@ -68,6 +70,7 @@ export class AuthService {
             user.email
         )
     }
+
 
     async signToken(
         userId: number, 
@@ -94,4 +97,10 @@ export class AuthService {
         }
 
     }
+
+    /*async deletePost(@Param('id') id: string): Promise<PostModel> {
+      return this.postService.deletePost({ id: Number(id) });
+    }*/
+
 }
+
