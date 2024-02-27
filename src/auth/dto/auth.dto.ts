@@ -1,15 +1,6 @@
-import { IsNotEmpty, IsString, IsEmail } from "class-validator"
+import { IsNotEmpty, IsString, IsEmail, IsInt } from "class-validator"
 
 export class AuthDto {
-
-
-    @IsEmail()
-    @IsNotEmpty()
-    email: string
-
-    @IsString()
-    @IsNotEmpty()
-    senha: string
 
     @IsString()
     @IsNotEmpty()
@@ -17,5 +8,22 @@ export class AuthDto {
 
     @IsString()
     @IsNotEmpty()
-    cpf: string
+    cpf: string    
+    
+    @IsEmail()
+    @IsNotEmpty()
+    email: string
+
+    // Mexer nisso dq
+    @IsInt()
+    @IsNotEmpty()
+    telefone: string
+
+    @IsString()
+    @IsNotEmpty()
+    senha: string
+
+
+
+
 }

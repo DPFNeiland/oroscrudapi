@@ -16,9 +16,9 @@ model User {
   nome             String?
   cpf              String?
   email            String    @unique
-  telefone         Int?
+  telefone         String?
   senha            String
-  idade            Int?
+  idade            String?
 
   Boletins          Boletim[]
 
