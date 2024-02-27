@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { ForbiddenException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthDto as signup } from "./dto";
@@ -7,7 +8,6 @@ import { PrismaClientKnownRequestError } from "@prisma/client/runtime/library";
 import { error } from "console";
 import { JwtService } from "@nestjs/jwt";
 import { ConfigService } from "@nestjs/config";
-import { Sign } from "crypto";
 
 @Injectable()
 export class AuthService {
@@ -24,7 +24,7 @@ export class AuthService {
                     nome: dto.nome,
                     cpf: dto.cpf,
                     email: dto.email,
-                    // telefone: dto.telefone,
+                    telefone: dto.telefone,
                     senha
                 }
             })

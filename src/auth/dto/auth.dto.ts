@@ -1,29 +1,29 @@
-import { IsNotEmpty, IsString, IsEmail, IsInt } from "class-validator"
+/* eslint-disable prettier/prettier */
+import {
+  IsNotEmpty,
+  IsString,
+  IsEmail,
+} from 'class-validator';
 
 export class AuthDto {
+  @IsString()
+  @IsNotEmpty()
+  nome: string;
 
-    @IsString()
-    @IsNotEmpty()
-    nome: string
+  @IsString()
+  @IsNotEmpty()
+  cpf: string;
 
-    @IsString()
-    @IsNotEmpty()
-    cpf: string    
-    
-    @IsEmail()
-    @IsNotEmpty()
-    email: string
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
 
-    // Mexer nisso dq
-    @IsInt()
-    @IsNotEmpty()
-    telefone: string
+  // Mexer nisso dq
+  @IsString()
+  @IsNotEmpty()
+  telefone: string;
 
-    @IsString()
-    @IsNotEmpty()
-    senha: string
-
-
-
-
+  @IsString()
+  @IsNotEmpty()
+  senha: string;
 }
