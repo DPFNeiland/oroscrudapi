@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { ForbiddenException, Injectable } from "@nestjs/common";
+import { BadRequestException, ForbiddenException, Injectable } from "@nestjs/common";
 import { PrismaService } from "src/prisma/prisma.service";
 import { AuthDto as signup } from "./dto";
 import  SignIn  from "./dto/signin.dto";
@@ -15,17 +15,23 @@ export class AuthService {
     constructor(private prisma: PrismaService, private jwt: JwtService, private config: ConfigService) { }
     async signup(dto: signup) {
         // gerar a senha
-        const senha = await argon.hash(dto.senha)
-        // salva os dados do usuário no banco de dados
 
+
+        // salva os dados do usuário no banco de dados
+        if(dto.senha == dto.confirmsenha){
+            const senha = await argon.hash(dto.senha)
         try {
             const User = await this.prisma.user.create({
                 data: {
                     nome: dto.nome,
-                    cpf: dto.cpf,
+                    naturalidade: dto.naturalidade,
+                    estadocivil: dto.estadocivil,
+                    datadenascimento: dto.datadenascimento,
                     email: dto.email,
+                    cpf: dto.cpf,
+                    cep: dto.cep,
                     telefone: dto.telefone,
-                    senha
+                    senha: senha
                 }
             })
             // retorna o usuário salvo
@@ -37,14 +43,17 @@ export class AuthService {
 
             // Cadastrar/Criação da conta            
         } catch (error) {
+            console.log(error)
             if (error instanceof PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {
-                    throw new ForbiddenException('Este email já foi cadastrado!')
+                    throw new ForbiddenException('Este email já foi cadastrado e/ou cpf já cadastrados!')
                 }
             }
         }
+    
         throw error
-
+}
+throw new BadRequestException('Senhas diferetes')
 
     }
     //Logar na conta

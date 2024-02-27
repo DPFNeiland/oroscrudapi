@@ -1,13 +1,17 @@
 -- CreateTable
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
-    "datadeNascimento" TIMESTAMP(3),
     "nome" TEXT,
-    "cpf" TEXT,
+    "naturalidade" TEXT,
+    "estadocivil" TEXT,
+    "datadenascimento" TEXT,
     "email" TEXT NOT NULL,
-    "telefone" TEXT,
+    "cpf" TEXT,
+    "cep" TEXT,
     "senha" TEXT NOT NULL,
+    "confirmesenha" TEXT,
     "idade" TEXT,
+    "telefone" TEXT,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -33,6 +37,9 @@ CREATE TABLE "bookmarks" (
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "users_cpf_key" ON "users"("cpf");
 
 -- AddForeignKey
 ALTER TABLE "bookmarks" ADD CONSTRAINT "bookmarks_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
