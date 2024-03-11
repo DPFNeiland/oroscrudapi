@@ -1,9 +1,10 @@
-import { Controller, Delete, Get, HttpStatus, Param, Patch, UseGuards } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, Param, Put, Patch, UseGuards } from "@nestjs/common";
 import { User } from '@prisma/client'
 import { GetUser } from "src/auth/decorator";
 import { DeleteUser } from "src/auth/decorator/delet-user.decorator";
 import { JwtGuard } from "src/auth/guard";
 import { UsuarioService } from "./usuario.service";
+import { UpdateUserDto } from "src/auth/dto/update.dto";
 
 @UseGuards(JwtGuard)
 @Controller('users')
@@ -22,16 +23,10 @@ export class UsuarioController {
         return this.UsuarioService.remove(id)
     }   
 
-    /*
-        async remove(@DeleteUser() user: User, @Param('id') id:number, @Res() resp:Response){
-        return resp .send(200).json({
-            Mensagem: "Usuario deletado"
-        })
-    }   
-    */ 
-
-    @Patch()
-    editUser(){
-        
+    @Put(':id')
+    async update(@Param('id') id: string, @Body() data:UpdateUserDto){
+        const userId = parseInt(id, 10)
+        return this.UsuarioService.update(userId, data)
     }
+
 } 
