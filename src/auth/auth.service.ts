@@ -46,7 +46,7 @@ export class AuthService {
             console.log(error)
             if (error instanceof PrismaClientKnownRequestError) {
                 if (error.code === 'P2002') {
-                    throw new ForbiddenException('Este email já foi cadastrado e/ou cpf já cadastrados!')
+                    throw new ForbiddenException('Este email e/ou cpf já foram cadastrados!')
                 }
             }
         }
