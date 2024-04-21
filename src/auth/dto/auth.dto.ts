@@ -2,7 +2,6 @@ import {
   IsNotEmpty,
   IsString,
   IsEmail,
-  isString,
 } from 'class-validator';
 
 export class AuthDto {
