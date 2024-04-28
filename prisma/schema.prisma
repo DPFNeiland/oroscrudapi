@@ -11,19 +11,41 @@ datasource db {
 }
 
 model User {
-  id               Int       @id @default(autoincrement())
+  id               Int     @id @default(autoincrement())
   nome             String?
   naturalidade     String?
   estadocivil      String?
   datadenascimento String?
-  email            String    @unique
-  cpf              String?   @unique
+  email            String  @unique
+  cpf              String? @unique
   cep              String?
   senha            String
 
+  idade    String?
+  telefone String?
 
-  idade            String?
-  telefone         String?
+  apelido            String?
+  NomeSocial         String?
+  FiliacaoMae        String?
+  FiliacaoPai        String?
+  genero             String?
+  OrientacaoSexual   String?
+  Autodeclaracao     String?
+  IdentidadeDeGenero String?
+  rg                 String?
+  SSP                String?
+  UfOrgaoEmissor     String?
+  Nacionalidade      String?
+  UFdenaturalidade   String?
+  Naturalidade       String?
+  Profissao          String?
+  Estado             String?
+  municipo           String?
+  endereco           String?
+  bairro             String?
+  numero             String?
+  logradouro         String?
+  complemento        String?
 
   Boletins Boletim[]
 

@@ -31,14 +31,35 @@ export class AuthService {
                         email: dto.email,
                         cpf: dto.cpf,
                         cep: dto.cep,
-                        telefone: dto.telefone,
+                        apelido: dto.apelido,
+                        NomeSocial: dto.NomeSocial,
+                        FiliacaoMae: dto.FiliacaoMae,
+                        FiliacaoPai: dto.FiliacaoPai,
+                        genero: dto.genero,
+                        OrientacaoSexual: dto.OrientacaoSexual,
+                        Autodeclaracao: dto.Autodeclaracao,
+                        rg: dto.rg,
+                        SSP: dto.SSP,
+                        UfOrgaoEmissor: dto.UfOrgaoEmissor,
+                        Nacionalidade: dto.Nacionalidade,
+                        UFdenaturalidade: dto.UFdenaturalidade,
+                        Naturalidade: dto.Naturalidade,
+                        Profissao: dto.Profissao,
+                        Estado: dto.Estado,
+                        IdentidadeDeGenero: dto.IdentidadeDeGenero,
+                        municipio: dto.municipo,
+                        endereco: dto.endereco,
+                        bairro: dto.bairro,
+                        numero: dto.numero,
+                        logradouro: dto.logradouro,
+                        complemento: dto.complemento,
                         senha: senha
                     }
                 })
                 // retorna o usuário salvo
                 return this.signToken(
                     User.id,
-                    User.email
+                    User.cpf
                 )
 
 
@@ -62,21 +83,21 @@ export class AuthService {
         // Achar o usuário pelo email
         const user = await this.prisma.user.findUnique({
             where: {
-                email: dto.email
+                cpf: dto.cpf
             },
         });
     
         // Se o usuário não existir criar uma exceção
-        if (!user) throw new ForbiddenException('Email ou senha incorretos');
+        if (!user) throw new ForbiddenException('CPF ou senha incorretos');
     
         // comparar a senha
         const pwMatches = await argon.verify(user.senha, dto.senha);
     
         // Se a senha for incorreta criar uma exceção
-        if (!pwMatches) throw new ForbiddenException('Email ou senha incorretos');
+        if (!pwMatches) throw new ForbiddenException('CPF ou senha incorretos');
     
         // Gerar o token de acesso
-        const accessToken = await this.signToken(user.id, user.email);
+        const accessToken = await this.signToken(user.id, user.cpf);
     
         // Verificar se o token foi gerado corretamente
         if (!accessToken) {
@@ -93,12 +114,12 @@ export class AuthService {
 
     async signToken(
         userId: number,
-        email: string
+        cpf: string
     ): Promise<{ access_token: string }> {
 
         const payload = {
             sub: userId,
-            email
+            cpf
         }
 
         const secret = this.config.get('JWT_SECRET')
