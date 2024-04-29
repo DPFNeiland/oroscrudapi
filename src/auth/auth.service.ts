@@ -47,7 +47,7 @@ export class AuthService {
                         Profissao: dto.Profissao,
                         Estado: dto.Estado,
                         IdentidadeDeGenero: dto.IdentidadeDeGenero,
-                        municipio: dto.municipo,
+                        municipo: dto.municipo,
                         endereco: dto.endereco,
                         bairro: dto.bairro,
                         numero: dto.numero,
