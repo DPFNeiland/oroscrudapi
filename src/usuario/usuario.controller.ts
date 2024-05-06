@@ -13,18 +13,17 @@ export class UsuarioController {
     }
 
     @Get('me')
-    getme( @GetUser() user: User, ) 
-    {
+    getme(@GetUser() user: User,) {
         return user;
     }
 
     @Delete(':id')
-    async remove(@DeleteUser() user: User, @Param('id') id:number){
+    async remove(@DeleteUser() user: User, @Param('id') id: number) {
         return this.UsuarioService.remove(id)
-    }   
+    }
 
     @Put(':id')
-    async update(@Param('id') id: string, @Body() data:UpdateUserDto){
+    async update(@Param('id') id: string, @Body() data: UpdateUserDto) {
         const userId = parseInt(id, 10)
         return this.UsuarioService.update(userId, data)
     }

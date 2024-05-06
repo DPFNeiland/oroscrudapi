@@ -53,21 +53,92 @@ model User {
 }
 
 model Boletim {
-  id                 Int      @id @default(autoincrement())
-  DatadeCriacao      DateTime @default(now())
-  TipoDeOcorrencia   String
-  DescricaodoBoletin String
+  id                Int      @id @default(autoincrement())
+  natureza          String?
+  data_ocorrido     DateTime @default(now())
+  hora_ocorrido     String?
+  cep_ocorrido      String?
+  ufBO              String?
+  municipioBO       String?
+  logradouro        String?
+  numero            String?
+  complemento       String?
+  bairro            String?
+  ponto_referencai  String?
+  tipo_local        String?
+  subgrupo          String?
+  evento            String?
+  pergunta_relativa Boolean?
+  descricao         String?
 
-  NomeDoDenunciante     String
-  ContatoDoDenunciante  Int
-  EnderecoDoDenunciante String
+  // Envolvido
 
-  NomeDaVitima     String?
-  ContatoDaVitima  String?
-  EnderecoDaVitima String?
+  nome         String?
+  nascimento   DateTime?
+  cpf          String?
+  envolvimento String?
 
-  EnderecoDoIncidente String
-  DescricaoDoLocal    String
+  // Envolvido Contato
+  email1        String?
+  email2        String?
+  telefone1     String?
+  telefone2     String?
+  telefone_fixo String?
+  rede_social1  String?
+  rede_social2  String?
+  rede_social3  String?
+
+  // Envolvido Info
+  apelido           String?
+  nome_social       String?
+  filiacao1         String?
+  filiacao2         String?
+  raca              String?
+  sexo              String?
+  orientacao        String?
+  identidade_genero String?
+  autodeclaracao    String?
+  rg                String?
+  orgao_emissor     String?
+  uf_orgao          String?
+  nacionalidade     String?
+  uf_naturalidade   String?
+  profissao         String?
+
+  // Envolvido Endereço
+
+  cep                            String?
+  uf                             String?
+  municipio_Envolvido_Endereco   String?
+  logradouro_Envolvido_Endereco  String?
+  numero_Envolvido_Endereco      String?
+  complemento_Envolvido_Endereco String?
+  bairro_Envolvido_Endereco      String?
+
+  // -------------------  OBJETO
+
+  dono_envolvido      String?
+  envolvimento_Objeto String?
+  descricao_objeto    String?
+  classificao_objeto  String?
+
+  // Objeto Telefone
+
+  numero_tel String?
+  operadora  String?
+  marca_tel  String?
+  modelo_tel String?
+  cor_tel    String?
+
+  // Objeto Documento
+
+  tipo_doc String?
+  num_doc  String?
+
+  // Objeto Outro
+
+  tipo_obj      String?
+  descricao_obj String?
 
   userId Int
   user   User @relation(fields: [userId], references: [id])
