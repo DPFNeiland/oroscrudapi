@@ -7,7 +7,7 @@ import { BoletimService } from "./boletim.service";
 export class BoletimController {
     constructor(private boletimService: BoletimService) {}
 
-    @UseGuards(JwtGuard) // Proteja a rota com JwtGuard se necessário
+    // @UseGuards(JwtGuard) // Proteja a rota com JwtGuard se necessário
     @Post('criarBO')
     async criarBO(@Body() dto: BoletimCriarDTO): Promise<any> { // Use o tipo correto para o retorno da função
         return await this.boletimService.criarBoletim(dto);
