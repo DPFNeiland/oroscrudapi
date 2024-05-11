@@ -6,8 +6,7 @@ export class BoletimCriarDTO {
   natureza?: string;
 
   @IsOptional()
-  @IsDate()
-  data_ocorrido?: Date;
+  data_ocorrido?
 
   @IsOptional()
   @IsString()
@@ -273,3 +272,5 @@ export class BoletimCriarDTO {
   @IsNumber()
   userId?: number;
 }
+
+

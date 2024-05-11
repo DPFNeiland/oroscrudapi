@@ -41,7 +41,7 @@ CREATE TABLE "users" (
 CREATE TABLE "bookmarks" (
     "id" SERIAL NOT NULL,
     "natureza" TEXT,
-    "data_ocorrido" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "data_ocorrido" TIMESTAMP(3),
     "hora_ocorrido" TEXT,
     "cep_ocorrido" TEXT,
     "ufBO" TEXT,
