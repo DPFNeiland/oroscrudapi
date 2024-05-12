@@ -78,6 +78,21 @@ export class BoletimService {
             console.log(error)
         }
     }
+
+    async findAllByUserId(userId: number): Promise<any> {
+        try {
+            return await this.prisma.boletim.findMany({
+                where: {
+                    userId: userId
+                },
+            });
+        } catch (error) {
+            console.error(error);
+            throw new InternalServerErrorException('Não foi possível encontrar os boletins.');
+        }
+    }
+
+    
 }
 
 
