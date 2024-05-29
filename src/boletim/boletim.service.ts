@@ -70,6 +70,8 @@ export class BoletimService {
                     num_doc: dto.num_doc,
                     tipo_obj: dto.tipo_obj,
                     descricao_obj: dto.descricao_obj,
+                    Situacao: dto.Situacao,
+                    Vizualizado: dto.Vizualizado,
                     userId: dto.userId
 
                 },
@@ -92,6 +94,14 @@ export class BoletimService {
         }
     }
 
+    async findAll(): Promise<any> {
+        try {
+            return await this.prisma.boletim.findMany();
+        } catch (error) {
+            console.error(error);
+            throw new InternalServerErrorException('Não foi possível encontrar todos os boletins.');
+        }
+    }
     
 }
 

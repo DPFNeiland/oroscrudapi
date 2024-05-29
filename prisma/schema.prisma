@@ -49,7 +49,8 @@ model User {
 model Boletim {
   id                             Int       @id @default(autoincrement())
   natureza                       String?
-  data_ocorrido                  DateTime?  
+  data_ocorrido                  DateTime?
+  data_do_registro               DateTime? @default(now())
   hora_ocorrido                  String?
   cep_ocorrido                   String?
   ufBO                           String?
@@ -111,6 +112,8 @@ model Boletim {
   num_doc                        String?
   tipo_obj                       String?
   descricao_obj                  String?
+  Situacao                       String?   @default("Em análise")
+  Vizualizado                    Boolean?  @default(false)
   userId                         Int
   user                           User      @relation(fields: [userId], references: [id])
 

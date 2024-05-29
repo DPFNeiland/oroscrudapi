@@ -271,6 +271,16 @@ export class BoletimCriarDTO {
   @IsOptional()
   @IsNumber()
   userId?: number;
+
+  // Informações do BO
+  @IsOptional()
+  @IsString()
+  Situacao?: string;
+
+  @IsOptional()
+  @IsBoolean()
+  Vizualizado?: boolean;
+
 }
 
 
