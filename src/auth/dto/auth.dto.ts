@@ -1,136 +1,136 @@
 import {
-  IsNotEmpty,
+  IsOptional,
   IsString,
   IsEmail,
 } from 'class-validator';
 
 export class AuthDto {
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   nome: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   naturalidade: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   estadocivil: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   datadenascimento: string;
 
   @IsEmail()
-  @IsNotEmpty()
+  @IsOptional()
   email: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   cpf: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   cep: string;
 
   // Mexer nisso dq
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   telefone: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   senha: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   confirmsenha: string
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   apelido: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   NomeSocial: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   FiliacaoMae: string;
 
   @IsString()
-  @IsNotEmpty()
+  @IsOptional()
   FiliacaoPai: string;
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   genero: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   OrientacaoSexual: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   Autodeclaracao: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString() 
   IdentidadeDeGenero: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString() 
   rg: string
   
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   SSP: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   UfOrgaoEmissor: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   Nacionalidade: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString() 
   UFdenaturalidade: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   Naturalidade: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   Profissao: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   Estado: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   municipo: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   endereco: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   bairro: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   numero: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   logradouro: string
 
-  @IsNotEmpty()
+  @IsOptional()
   @IsString()
   complemento: string
 }
